@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 
 import es.sanitas.calculator.model.Operation;
 
-class OperationServiceTests {
+public class OperationServiceTests {
 
 	@Test
 	public void whenExecuteOperationItShouldReturnTheOperationResult() {
