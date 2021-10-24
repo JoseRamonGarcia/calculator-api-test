@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class SubtractionTests {
 
 	@Test
-	public void whenExecuteItShouldReturnTheAdditionResult() {
+	public void whenExecuteItShouldReturnTheSubtractionResult() {
 		// Arrange
 		Subtraction subtraction = new Subtraction(3, 1);
 		
