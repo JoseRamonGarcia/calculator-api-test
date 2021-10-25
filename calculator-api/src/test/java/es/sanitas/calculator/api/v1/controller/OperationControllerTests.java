@@ -8,13 +8,14 @@ import org.springframework.http.ResponseEntity;
 
 import es.sanitas.calculator.api.v1.dto.BasicOperation;
 import es.sanitas.calculator.api.v1.dto.Operator;
+import es.sanitas.calculator.api.v1.exceptions.MappingException;
 import es.sanitas.calculator.api.v1.mapper.OperationMapper;
 import es.sanitas.calculator.service.OperationService;
 
 public class OperationControllerTests {
 	
 	@Test
-	public void whenCalculateWithAnOperationItShouldMapTheDtoToModelAndReturnTheServiceOperationResult() {
+	public void whenCalculateWithAnOperationItShouldMapTheDtoToModelAndReturnTheServiceOperationResult() throws MappingException {
 		// Arrange
 		OperationMapper operationMapper = Mockito.mock(OperationMapper.class);
 		OperationService operationService = Mockito.mock(OperationService.class);
@@ -24,11 +25,11 @@ public class OperationControllerTests {
 		BasicOperation basicOperation = new BasicOperation(Operator.ADD, 1, 2);
 		
 		// Act
-		ResponseEntity<Double> value = operationController.calculate(basicOperation);
+		ResponseEntity<?> value = operationController.calculate(basicOperation);
 		
 		// Assert
 		Mockito.verify(operationMapper).getOperationFromDto(basicOperation);
-		assertEquals(5.0, value.getBody(), 0);
+		assertEquals(5.0, (Double) value.getBody(), 0);
 	}
 	
 }

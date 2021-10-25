@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import es.sanitas.calculator.api.v1.dto.BasicOperation;
 import es.sanitas.calculator.api.v1.dto.Operator;
+import es.sanitas.calculator.api.v1.exceptions.MappingException;
 import es.sanitas.calculator.model.Addition;
 import es.sanitas.calculator.model.Operation;
 import es.sanitas.calculator.model.Subtraction;
@@ -13,7 +14,7 @@ import es.sanitas.calculator.model.Subtraction;
 public class OperationMapperTests {
 	
 	@Test
-	public void whenGetOperationFromDtoWithAnAddOperationItShouldReturnAnAddition() {
+	public void whenGetOperationFromDtoWithAnAddOperationItShouldReturnAnAddition() throws MappingException {
 		// Arrange
 		OperationMapper operationMapper = new OperationMapper();
 		BasicOperation basicOperation = new BasicOperation(Operator.ADD, 1, 2);
@@ -26,7 +27,7 @@ public class OperationMapperTests {
 	}
 	
 	@Test
-	public void whenGetOperationFromDtoWithAnSubtractOperationItShouldReturnAnSubtraction() {
+	public void whenGetOperationFromDtoWithAnSubtractOperationItShouldReturnAnSubtraction() throws MappingException {
 		// Arrange
 		OperationMapper operationMapper = new OperationMapper();
 		BasicOperation basicOperation = new BasicOperation(Operator.SUBTRACT, 1, 2);
